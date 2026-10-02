@@ -4,36 +4,67 @@
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 ![Tool](https://img.shields.io/badge/Tool-Xilinx%20Vivado-orange)
 
-## Overview
-A fully functional Single Cycle RISC-V RV32I Processor designed and 
-implemented in Verilog HDL. This processor executes one instruction per 
-clock cycle and supports the complete RV32I base integer instruction set.
+# RISC-V Single-Cycle Processor
 
-## Architecture
-The processor is built using a classic single-cycle datapath with the 
-following modules:
+This project is a 32-bit single-cycle RISC-V processor designed using Verilog HDL and implemented in Xilinx Vivado.
 
-| Module | File | Description |
-|--------|------|-------------|
-| Top Level CPU | `RISCV32CPU.v` | Top-level integration module |
-| CPU Datapath | `cpu_top.v` | Main datapath connections |
-| ALU | `alu.v` | Arithmetic & Logic Unit |
-| Control Unit | `ctrlunit.v` | Instruction decoder & control signals |
-| Register File | `regfile.v` | 32 x 32-bit general purpose registers |
-| Instruction Memory | `instrmem.v` | ROM for instruction storage |
-| Data Memory | `datamem.v` / `data_mem.v` | RAM for load/store operations |
-| Immediate Generator | `immgen.v` | Immediate value sign extension |
-| Branch Unit | `branchunit.v` | Branch condition evaluation |
-| Performance Counter | `perfcounter.v` | Cycle and instruction counters |
-| Testbench | `tb_cpu.v` | Functional verification testbench |
+## About the Project
 
-## Supported Instructions
-- **R-Type:** ADD, SUB, AND, OR, XOR, SLL, SRL, SRA, SLT, SLTU
-- **I-Type:** ADDI, ANDI, ORI, XORI, SLTI, LW, JALR
-- **S-Type:** SW
-- **B-Type:** BEQ, BNE, BLT, BGE
-- **U-Type:** LUI, AUIPC
-- **J-Type:** JAL
+The processor is based on the RV32I instruction set and follows a single-cycle datapath. The main modules include:
+
+- Program Counter
+- Instruction Memory
+- Register File
+- ALU
+- Control Unit
+- Immediate Generator
+- Data Memory
+- Branch Unit
+- Performance Counter
+- Simple I/O
+
+The processor was tested using simulation and waveform analysis in Vivado.
+
+## Instructions
+
+The design supports instructions from different RISC-V formats including:
+
+- R-type
+- I-type
+- S-type
+- B-type
+- U-type
+- J-type
+
+Some of the tested instructions include ADD, SUB, ADDI, LW, SW, BEQ, JAL, LUI and AUIPC.
+
+## Static Timing Analysis
+
+I also performed post-implementation Static Timing Analysis using Xilinx Vivado.
+
+- Target FPGA: Artix-7
+- Device: xc7a100tcsg324-1
+- Clock constraint: 10 ns (100 MHz)
+- WNS: +1.675 ns
+- WHS: +0.287 ns
+- TNS: 0 ns
+- THS: 0 ns
+- Timing violations: 0
+
+During synthesis, I faced an issue with the `program.mem` file used for instruction memory initialization. I checked the synthesis warnings, added the memory file to the appropriate project sources, and reran synthesis successfully.
+
+## Tools Used
+
+- Verilog HDL
+- Xilinx Vivado
+- Vivado Simulator
+- Artix-7 FPGA
+
+## Files
+
+The repository contains the Verilog source files, testbench, instruction memory file and timing constraint file.
+
+
 
 ## Tools Used
 - **HDL:** Verilog
