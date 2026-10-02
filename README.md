@@ -1,10 +1,9 @@
-# Single Cycle RISC-V RV32I Processor
+# RISC-V Single-Cycle Processor
 
 ![Verilog](https://img.shields.io/badge/HDL-Verilog-blue)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 ![Tool](https://img.shields.io/badge/Tool-Xilinx%20Vivado-orange)
 
-# RISC-V Single-Cycle Processor
 
 This project is a 32-bit single-cycle RISC-V processor designed using Verilog HDL and implemented in Xilinx Vivado.
 
